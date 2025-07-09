@@ -5,7 +5,7 @@ s.boot;
 
 // Cargar sonido en Buffer
 b = Buffer.read(s, "/home/hernani/cavlp-25p/sonidos/git1-m.wav");
-c = Buffer.read(s, "/home/hernani/cavlp-25p/sonidos/tapon_botella_st.wav");
+c = Buffer.read(s, "/home/hernani/cavlp-25p/sonidos/tapa_botella_st.wav");
 
 // Ruta Mac
 //"/Users/name/Desktop/folder/sonido2.wav"
@@ -46,12 +46,18 @@ Synth(\sonido2);
 // play, quant, stop
 
 (
-~seq1=Pdef(\tacos, Pbind(\instrument,\sonido1,\amp,1, \dur, Pseq([1/8, 1/4, 1/4], inf), \rate, Pseq([4, 3, 4, 2, 3, 3, 2, 1], inf)))
+~seq1=Pdef(\tacos, Pbind(\instrument,\sonido1,\amp,0.5, \dur, Pseq([1/8, 1/4, 1/4], inf), \rate, Pseq([4, 3, 4, 2, 0.9, 2, 1], inf)))
+);
+
+(
+~seq2=Pdef(\tapa, Pbind(\instrument,\sonido2,\amp,0.75, \dur, Pseq([1/2], inf), \rate, Pseq([0.5], inf)))
 );
 
 ~seq1.play.quant(4);
-~seq1.stop
+~seq1.stop;
 
+~seq2.play.quant(4);
+~seq2.stop;
 // Patrones
 pseq
 pn
