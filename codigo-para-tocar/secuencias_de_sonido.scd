@@ -11,29 +11,29 @@
 // establece el tempo de la pieza. 120/60 equivale a un tempo bpm de 120
 TempoClock.tempo=120/60;
 
-(
+//(
 (
 ~son1 = Pdef(\son1, Pbind(\instrument, \audio1,
 	\dur, Pseq([1/4, 3/4, 1/2, 1/2], inf),
 	\sus, Pseq([1, 0.01, 0.1, 0.02], inf),
 	\rel, Pseq([0.01, 0.08, 0.05, 0.04], inf),
-	\rate, Pseq([1, 1.21, 1.38, 1], inf),
+	\rate, Pseq([1, 1.02], inf),
 	\sp, Pseq([0, 0.2, 0.3, 0.4, 0.5, 0.4, 0.3, 0.5], inf),
-	\amp, 0.2,
-	\out, 11
+	\amp, 0.3,
+	\out, 0
 	))
 );
 
 (
 ~son2 = Pdef(\son2, Pbind(\instrument, \audio2,
-	\dur, Pseq([2], inf),
+	\dur, Pseq([2, 1, 1], inf),
 	\at, 0.01,
 	\sus, Pseq([0.05], inf),
 	\rel, Pseq([0.3], inf),
-	\rate, Pseq([1.22], inf),
+	\rate, Pseq([1.22, 1.1, 1.3], inf),
 	\sp, Pseq([0.1], inf),
 	\amp, 0.9,
-	\out, 9
+	\out, 11
 ))
 );
 
@@ -86,6 +86,18 @@ TempoClock.tempo=120/60;
 	\out, 0
 ))
 );
+
+(
+~son7 = Pdef(\son7, Pbind(\instrument, \saw,
+	\dur, Pseq([0.5], inf),
+	\degree, Pseq([0, 1, 2, 3, 4, 5, 6, 7], inf),
+	\scale, Scale.major,
+	\rel, Pseq([0.15], inf),
+	\sp, 0,
+	\amp, 0.25,
+	\out, 0
+))
+)
 );
 
 ~son1.play.quant(4);
@@ -100,5 +112,7 @@ TempoClock.tempo=120/60;
 ~son5.stop;
 ~son6.play.quant(4);
 ~son6.stop;
+~son7.play.quant(4);
+~son7.stop;
 
 s.quit; // APAGA supercollider

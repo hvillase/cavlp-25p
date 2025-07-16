@@ -100,6 +100,15 @@ SynthDef(\audio6, {|rate=1, sp=0, at=0.001, sus=1, rel=0.001, pan=0, amp=1, out=
 					Out.ar(out, paneo * env);
 				}).add;
 );
+(
+SynthDef(\saw,{|freq = 300, amp = 0.3, pan = 0, at = 0.01, rel = 0.09, out = 0|
+				var sen, env;
+				sen = Saw.ar(freq, amp);
+				sen = Pan2.ar(sen, pan);
+				env = EnvGen.kr(Env.perc(at, rel), doneAction:2);
+				Out.ar(out, sen * env)
+				}).add;
+);
 );
 
 // Probar sonidos
@@ -110,5 +119,6 @@ Synth(\audio3);
 Synth(\audio4);
 Synth(\audio5);
 Synth(\audio6);
+Synth(\saw);
 
-s.quit; // APAGAR SuperCollider
+s.quit; // APAG AR SuperCollider
